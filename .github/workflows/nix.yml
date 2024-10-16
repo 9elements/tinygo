@@ -12,6 +12,9 @@ jobs:
   nix-test:
     runs-on: ubuntu-latest
     steps:
+      - name: Uninstall system LLVM packages
+        run: |
+          sudo apt remove llvm-16 llvm-17 llvm-18 -y
       - name: Checkout
         uses: actions/checkout@v4
       - name: Pull musl
