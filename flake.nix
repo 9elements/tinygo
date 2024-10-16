@@ -50,6 +50,7 @@
             # These dependencies are required for building tinygo (go install).
             go
             llvmPackages_18.llvm
+            llvmPackages_18.llvm.dev
             llvmPackages_18.libclang
             # Additional dependencies needed at runtime, for building and/or
             # flashing.
