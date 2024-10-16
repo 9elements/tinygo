@@ -43,4 +43,4 @@ jobs:
       - uses: cachix/install-nix-action@v22
       - name: Test
         run: |
-          nix develop --ignore-environment --keep HOME --command bash -c "go install && ~/go/bin/tinygo version && ~/go/bin/tinygo build -o test ./testdata/cgo"
+          nix develop --ignore-environment --keep HOME --command bash -c "GOMAXPROCS=1 go install -v -x -a && ~/go/bin/tinygo version && ~/go/bin/tinygo build -o test ./testdata/cgo"
