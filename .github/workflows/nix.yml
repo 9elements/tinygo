@@ -41,6 +41,9 @@ jobs:
           path: |
             llvm-project/compiler-rt
       - uses: cachix/install-nix-action@v22
+      - name: Debug print
+        run: |
+          nix develop --ignore-environment --keep HOME --command bash -c "set"
       - name: Test
         run: |
           nix develop --ignore-environment --keep HOME --command bash -c "GOMAXPROCS=1 go install -v -x -a && ~/go/bin/tinygo version && ~/go/bin/tinygo build -o test ./testdata/cgo"
