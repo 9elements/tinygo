@@ -78,6 +78,8 @@
 
             # Ugly hack to make the Clang resources directory available.
             export GOFLAGS="\"-ldflags=-X github.com/tinygo-org/tinygo/goenv.clangResourceDir=${llvmPackages_18.clang.cc.lib}/lib/clang/18\" -tags=llvm18"
+
+            export CGO_CPPFLAGS="-I${llvmPackages_18.llvm.dev}/include"
           '';
         };
       }
