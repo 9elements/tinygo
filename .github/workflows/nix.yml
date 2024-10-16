@@ -12,9 +12,12 @@ jobs:
   nix-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Uninstall system LLVM packages
+      - name: Uninstall system LLVM packages exept LLVM 18
         run: |
-          sudo apt remove llvm-16 llvm-17 llvm-18 -y
+          sudo apt remove llvm-16 llvm-17 -y
+      - name: Trap Target.def header
+        run: |
+          sudo echo '#error("nope")' | sudo tee /usr/include/llvm-18/llvm/Config/Targets.def
       - name: Checkout
         uses: actions/checkout@v4
       - name: Pull musl
